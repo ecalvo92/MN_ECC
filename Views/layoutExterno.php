@@ -9,7 +9,7 @@ function MostrarHeader()
                     <div class="col-lg-5 col-md-5 col-6">
                     <div class="header-left d-flex align-items-center">
                        <div class="navbar-logo">
-                            <a href="index.html">
+                            <a href="../vHome/login.php">
                             <img src="../assets/images/logo.svg" alt="logo" />
                             </a>
                         </div>

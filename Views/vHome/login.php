@@ -69,7 +69,7 @@ MostrarCSS();
                                                     
                                                     <div class="col-xxl-12 col-lg-12 col-md-12">
                                                         <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                                                            <a href="reset-password.html" class="hover-underline">
+                                                            <a href="recuperarAcceso.php" class="hover-underline">
                                                                 Olvidó su contraseña?
                                                             </a>
                                                         </div>
@@ -86,7 +86,7 @@ MostrarCSS();
                                             <div class="singin-option pt-40">                                         
                                                 <p class="text-sm text-medium text-dark text-center">
                                                     No tiene una cuenta aún?
-                                                    <a href="signup.html">Regístrate</a>
+                                                    <a href="registro.php">Registrarse</a>
                                                 </p>
                                             </div>
                                         </div>

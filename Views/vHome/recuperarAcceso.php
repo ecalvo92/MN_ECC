@@ -71,7 +71,7 @@ MostrarCSS();
                                             </form>
                                             <div class="singup-option pt-40">                                        
                                                 <p class="text-sm text-medium text-dark text-center">
-                                                    Ya tiene una cuenta? <a href="signin.html">Incia Sesión</a>
+                                                    Ya tiene una cuenta? <a href="login.php">Inicia Sesión</a>
                                                 </p>
                                             </div>
                                         </div>
