@@ -1,4 +1,4 @@
 <?php
-    header("Location: Views/vHome/inicio.php");
+    header("Location: Views/vHome/login.php");
     exit;
 ?>
