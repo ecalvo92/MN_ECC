@@ -1,5 +1,5 @@
 <?php
-include_once "../layout.php";
+include_once "../layoutExterno.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +15,8 @@ MostrarCSS();
         <div class="spinner"></div>
     </div>
 
-    <?php
-    MostrarNav();
-    ?>
-
     <div class="overlay"></div>
-    <main class="main-wrapper">
+    <main class="main-wrapper main-wapper-login">
 
         <?php
         MostrarHeader();
@@ -32,7 +28,7 @@ MostrarCSS();
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="title">
-                                <h2>Title</h2>
+                                <h2>Login</h2>
                             </div>
                         </div>
                         <div class="col-md-6">

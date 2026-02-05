@@ -3860,6 +3860,10 @@ h6,
   }
 }
 
+.main-wapper-login{
+    margin-left: 0px!important;
+}
+
 .main-wrapper {
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
