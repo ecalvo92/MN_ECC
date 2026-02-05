@@ -1,4 +1,4 @@
-WELCOME
-HOLA
-YA TERMINE TODO
-Welcome!!!
+<?php
+    header("Location: Views/vHome/inicio.php");
+    exit;
+?>
