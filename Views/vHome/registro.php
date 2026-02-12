@@ -1,5 +1,6 @@
 <?php
-include_once "../layoutExterno.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layoutExterno.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/HomeController.php";
 ?>
 
 <!DOCTYPE html>
@@ -52,35 +53,40 @@ MostrarCSS();
                                         <div class="form-wrapper">
                                             <h3 class="mb-15">Crear Cuenta</h3>
                                             
-                                            <form action="#">
+                                            <form action="" method="POST">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="input-style-1">
                                                             <label>Identificación</label>
-                                                            <input type="text" placeholder="Identificación" />
+                                                            <input type="text" placeholder="Identificación" 
+                                                            id="Identificacion" name="Identificacion" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="input-style-1">
                                                             <label>Nombre</label>
-                                                            <input type="text" placeholder="Nombre" />
+                                                            <input type="text" placeholder="Nombre"
+                                                            id="Nombre" name="Nombre" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="input-style-1">
                                                             <label>Contraseña</label>
-                                                            <input type="password" placeholder="Contraseña" />
+                                                            <input type="password" placeholder="Contraseña"
+                                                            id="Contrasenna" name="Contrasenna" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="button-group d-flex justify-content-center flex-wrap">
-                                                            <button class="main-btn primary-btn btn-hover w-100 text-center">
+                                                            <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center"
+                                                            id="btnRegistrar" name="btnRegistrar">
                                                                 Procesar
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </form>
+
                                             <div class="singup-option pt-40">                                        
                                                 <p class="text-sm text-medium text-dark text-center">
                                                     Ya tiene una cuenta? <a href="login.php">Inicia Sesión</a>

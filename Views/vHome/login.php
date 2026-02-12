@@ -1,5 +1,5 @@
 <?php
-include_once "../layoutExterno.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layoutExterno.php";
 ?>
 
 <!DOCTYPE html>
