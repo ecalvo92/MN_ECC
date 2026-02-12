@@ -7,7 +7,7 @@ if (isset($_POST["btnRegistrar"])) {
     $nombre = $_POST["Nombre"];
     $contrasenna = $_POST["Contrasenna"];
 
-    $result = Registrar($identificacion, $nombre, $contrasenna);
+    $result = RegistrarModel($identificacion, $nombre, $contrasenna);
 
     if ($result) {
         header("Location: ../../Views/vHome/login.php");
@@ -16,3 +16,19 @@ if (isset($_POST["btnRegistrar"])) {
         $_POST["Mensaje"] = "Su información no fue registrada correctamente";
     }
 }
+
+if (isset($_POST["btnIniciarSesion"])) {
+
+    $identificacion = $_POST["Identificacion"];
+    $contrasenna = $_POST["Contrasenna"];
+
+    $result = IniciarSesionModel($identificacion, $contrasenna);
+
+    if ($result) {
+        header("Location: ../../Views/vHome/inicio.php");
+        exit;
+    } else {
+        $_POST["Mensaje"] = "Su información no fue autenticada correctamente";
+    }
+}
+
