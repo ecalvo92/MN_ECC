@@ -76,6 +76,13 @@ MostrarCSS();
                                                                 id="Nombre" name="Nombre" />
                                                         </div>
                                                     </div>
+                                                     <div class="col-12">
+                                                        <div class="input-style-1">
+                                                            <label>Correo Electrónico</label>
+                                                            <input type="text" placeholder="Correo Electrónico"
+                                                                id="CorreoElectronico" name="CorreoElectronico" />
+                                                        </div>
+                                                    </div>
                                                     <div class="col-12">
                                                         <div class="input-style-1">
                                                             <label>Contraseña</label>

@@ -5,9 +5,10 @@ if (isset($_POST["btnRegistrar"])) {
 
     $identificacion = $_POST["Identificacion"];
     $nombre = $_POST["Nombre"];
+    $correoElectronico = $_POST["CorreoElectronico"];
     $contrasenna = $_POST["Contrasenna"];
 
-    $result = RegistrarModel($identificacion, $nombre, $contrasenna);
+    $result = RegistrarModel($identificacion, $nombre, $contrasenna, $correoElectronico);
 
     if ($result) {
         header("Location: ../../Views/vHome/login.php");
@@ -19,10 +20,10 @@ if (isset($_POST["btnRegistrar"])) {
 
 if (isset($_POST["btnIniciarSesion"])) {
 
-    $identificacion = $_POST["Identificacion"];
+    $correoElectronico = $_POST["CorreoElectronico"];
     $contrasenna = $_POST["Contrasenna"];
 
-    $result = IniciarSesionModel($identificacion, $contrasenna);
+    $result = IniciarSesionModel($correoElectronico, $contrasenna);
 
     if ($result) {
         header("Location: ../../Views/vHome/inicio.php");

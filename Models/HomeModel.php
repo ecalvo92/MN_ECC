@@ -1,29 +1,24 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/UtilitarioModel.php";
 
-function RegistrarModel($identificacion, $nombre, $contrasenna)
+function RegistrarModel($identificacion, $nombre, $contrasenna, $correoElectroncio)
 {
-    //Paso 1. Abrir la BD
-    $context = mysqli_connect("127.0.0.1:3307","root","","mn_db");
+    $context = OpenDatabase();
 
-    //Paso 2. Ejecutar la sentencia
-    $sp = "CALL sp_Registrar('$identificacion', '$nombre', '$contrasenna')";
+    $sp = "CALL sp_Registrar('$identificacion', '$nombre', '$contrasenna', '$correoElectroncio')";
     $result = $context -> query($sp);
 
-    //Paso 3. Cerrar la BD
-    mysqli_close($context);
+    CloseDatabase($context);
     return  $result;
 }
 
-function IniciarSesionModel($identificacion, $contrasenna)
+function IniciarSesionModel($correoElectronico, $contrasenna)
 {
-    //Paso 1. Abrir la BD
-    $context = mysqli_connect("127.0.0.1:3307","root","","mn_db");
+    $context = OpenDatabase();
 
-    //Paso 2. Ejecutar la sentencia
-    $sp = "CALL sp_IniciarSesion('$identificacion', '$contrasenna')";
+    $sp = "CALL sp_IniciarSesion('$correoElectronico', '$contrasenna')";
     $result = $context -> query($sp);
 
-    //Paso 3. Cerrar la BD
-    mysqli_close($context);
+    CloseDatabase($context);
     return  $result;
 }
