@@ -9,7 +9,7 @@ function RegistrarModel($identificacion, $nombre, $contrasenna, $correoElectronc
     $result = $context -> query($sp);
 
     CloseDatabase($context);
-    return  $result;
+    return $result;
 }
 
 function IniciarSesionModel($correoElectronico, $contrasenna)
@@ -19,6 +19,12 @@ function IniciarSesionModel($correoElectronico, $contrasenna)
     $sp = "CALL sp_IniciarSesion('$correoElectronico', '$contrasenna')";
     $result = $context -> query($sp);
 
+    $datos = null;
+    while($fila = $result -> fetch_assoc())
+    {
+        $datos = $fila;   
+    }
+
     CloseDatabase($context);
-    return  $result;
+    return $datos;
 }
