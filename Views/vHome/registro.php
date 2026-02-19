@@ -60,7 +60,7 @@ MostrarCSS();
                                         <div class="form-wrapper">
                                             <h3 class="mb-15">Crear Cuenta</h3>
 
-                                            <form action="" method="POST">
+                                            <form id="formRegistro" action="" method="POST">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="input-style-1">
@@ -126,6 +126,8 @@ MostrarCSS();
     <?php
     MostrarJS();
     ?>
+    <script src="../assets/funciones/registro.js"></script>
+
 </body>
 
 </html>
