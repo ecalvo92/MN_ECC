@@ -5959,3 +5959,7 @@ h6,
     transform: rotate(360deg);
   }
 }
+
+.ReadOnly{
+  cursor: not-allowed;
+}

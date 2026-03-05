@@ -70,14 +70,14 @@ MostrarCSS();
                                                         <div class="input-style-1">
                                                             <label>Identificación</label>
                                                             <input type="text" placeholder="Identificación"
-                                                                id="Identificacion" name="Identificacion" />
+                                                                id="Identificacion" name="Identificacion" onkeyup="ConsultarNombre();" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="input-style-1">
                                                             <label>Nombre</label>
                                                             <input type="text" placeholder="Nombre"
-                                                                id="Nombre" name="Nombre" />
+                                                                id="Nombre" name="Nombre" class="ReadOnly" readOnly="true" />
                                                         </div>
                                                     </div>
                                                      <div class="col-12">
