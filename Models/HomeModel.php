@@ -42,3 +42,45 @@ function IniciarSesionModel($correoElectronico, $contrasenna)
         return null;
     }
 }
+
+function ValidarCorreoModel($correoElectronico)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ValidarCorreo('$correoElectronico')";
+        $result = $context -> query($sp);
+
+        $datos = null;
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}
+
+function ActualizarContrasennaModel($nuevaContrasenna, $consecutivo)
+{
+   try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ActualizarContrasenna('$nuevaContrasenna', '$consecutivo')";
+        $result = $context -> query($sp);
+
+        CloseDatabase($context);
+        return $result;
+    }
+    catch (Exception $e) 
+    {
+        return false;
+    }
+}
