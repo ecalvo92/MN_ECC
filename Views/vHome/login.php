@@ -49,15 +49,18 @@ MostrarCSS();
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-
-                                    <?php
-                                        if (isset($_POST["Mensaje"])) {
-                                            echo $_POST["Mensaje"];
-                                        }
-                                    ?>
-
                                     <div class="signin-wrapper">
                                         <div class="form-wrapper">
+
+                                            <?php
+                                                if (isset($_POST["Mensaje"])) {
+                                                    echo    
+                                                        '<div class="alert alert-danger text-center" role="alert">
+                                                            ' . $_POST["Mensaje"] . '
+                                                        </div>';
+                                                }
+                                            ?>
+
                                             <h3 class="mb-15">Iniciar Sesión</h3>
                                          
                                             <form id="formLogin" action="" method="POST">
