@@ -34,7 +34,7 @@ CREATE TABLE `tusuario` (
   PRIMARY KEY (`Consecutivo`),
   UNIQUE KEY `UK_Identificacion` (`Identificacion`),
   UNIQUE KEY `UK_CorreoElectronico` (`CorreoElectronico`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `tusuario` (
 
 LOCK TABLES `tusuario` WRITE;
 /*!40000 ALTER TABLE `tusuario` DISABLE KEYS */;
-INSERT INTO `tusuario` VALUES (15,'119310359','BONILLA MIRANDA MAUREEM VALERIA','YZZIRJGX','mbonilla10359@ufide.ac.cr',_binary ''),(16,'304590415','EDUARDO JOSE CALVO CASTILLO','90415','ecalvo90415@ufide.ac.cr',_binary '');
+INSERT INTO `tusuario` VALUES (15,'119310359','BONILLA MIRANDA MAUREEM VALERIA','Saprissa','mbonilla10359@ufide.ac.cr',_binary ''),(16,'304590415','EDUARDO JOSE CALVO CASTILLO','90415','ecalvo90415@ufide.ac.cr',_binary ''),(17,'504420898','MARIN CHAVARRIA JIMENA MARIA','Prueba1234','jmarin20898@ufide.ac.cr',_binary '');
 /*!40000 ALTER TABLE `tusuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,4 +175,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-04 21:00:44
+-- Dump completed on 2026-03-11 21:05:18
