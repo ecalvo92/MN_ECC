@@ -9,7 +9,7 @@ function MostrarNav()
     echo
     '<aside class="sidebar-nav-wrapper">
                 <div class="navbar-logo">
-                    <a href="index.html">
+                    <a href="../vHome/inicio.php">
                     <img src="../assets/images/logo.svg" alt="logo" />
                     </a>
                 </div>

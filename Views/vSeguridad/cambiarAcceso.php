@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/SeguridadController.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,58 +12,83 @@ MostrarCSS();
 
 <body>
 
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
-
-  <?php
-  MostrarNav();
-  ?>
-
-  <div class="overlay"></div>
-  <main class="main-wrapper">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
 
     <?php
-    MostrarHeader();
+    MostrarNav();
     ?>
 
-    <section class="section">
-      <div class="container-fluid">
-        <div class="title-wrapper pt-30">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="title">
-                <h2>Inicio</h2>
-              </div>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+
+        <?php
+        MostrarHeader();
+        ?>
+
+        <section class="section">
+            <div class="container-fluid">
+                <div class="title-wrapper pt-30">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 mx-auto">
+                            <div class="card-style mt-5">
+
+                                <?php
+                                if (isset($_POST["Mensaje"])) {
+                                    echo
+                                    '<div class="alert alert-danger text-center" role="alert">
+                                                            ' . $_POST["Mensaje"] . '
+                                                        </div>';
+                                }
+                                ?>
+
+                                <h3 class="mb-15">Cambiar Contraseña</h3>
+
+                                <form id="formCambiarAcceso" action="" method="POST">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label>Nueva Contraseña</label>
+                                                    <input type="password" placeholder="Nueva Contraseña"
+                                                        id="NuevaContrasenna" name="NuevaContrasenna" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label>Confirmar Contraseña</label>
+                                                    <input type="password" placeholder="Confirmar Contraseña"
+                                                        id="ConfirmarContrasenna" name="ConfirmarContrasenna" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="button-group d-flex justify-content-center flex-wrap">
+                                                <button type="submit" id="btnCambiarAcceso" name="btnCambiarAcceso"
+                                                    class="main-btn primary-btn btn-hover w-100 text-center">
+                                                    Procesar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-              <div class="breadcrumb-wrapper">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                      <a href="#0">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      Page
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
+
+        <?php
+        MostrarFooter()
+        ?>
+
+    </main>
 
     <?php
-    MostrarFooter()
+    MostrarJS();
     ?>
-
-  </main>
-
-  <?php
-  MostrarJS();
-  ?>
+    <script src="../assets/funciones/cambiarAcceso.js"></script>
 
 </body>
 

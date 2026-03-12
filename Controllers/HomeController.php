@@ -32,6 +32,7 @@ if (isset($_POST["btnIniciarSesion"])) {
 
     if ($result) {
         $_SESSION["NombreUsuario"] = $result["Nombre"];
+        $_SESSION["Consecutivo"] = $result["Consecutivo"];
         header("Location: ../../Views/vHome/inicio.php");
         exit;
     } else {
