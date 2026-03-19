@@ -17,7 +17,7 @@ function MostrarNav()
                 <nav class="sidebar-nav">
                     <ul>
                     <li class="nav-item">
-                        <a href="notification.html">
+                        <a href="../vProducto/consultarProductos.php">
                         <span class="icon">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -30,7 +30,7 @@ function MostrarNav()
                                 d="M7.48901 17.1925C8.10004 17.8918 8.99841 18.3335 10 18.3335C11.0016 18.3335 11.9 17.8918 12.511 17.1925C10.8482 17.4634 9.15183 17.4634 7.48901 17.1925Z" />
                             </svg>
                         </span>
-                        <span class="text">Notifications</span>
+                        <span class="text">Productos</span>
                         </a>
                     </li>
                     </ul>

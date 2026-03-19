@@ -1,0 +1,105 @@
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/ProductoController.php";
+
+$datosProductos = ConsultarProductos();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+MostrarCSS();
+?>
+
+<body>
+
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <?php
+  MostrarNav();
+  ?>
+
+  <div class="overlay"></div>
+  <main class="main-wrapper">
+
+    <?php
+    MostrarHeader();
+    ?>
+
+    <section class="section">
+            <div class="container-fluid">
+                <div class="title-wrapper pt-30">
+                    <div class="row align-items-center">
+                        <div class="col-md-11 mx-auto">
+                            <div class="card-style mt-5">
+
+                                <?php
+                                if (isset($_POST["Mensaje"])) {
+                                    echo
+                                    '<div class="alert alert-danger text-center" role="alert">
+                                                            ' . $_POST["Mensaje"] . '
+                                                        </div>';
+                                }
+                                ?>
+
+                                <h3 class="mb-15">Productos</h3>
+
+                                <form action="" method="POST">
+                                    <div class="row">
+                                        
+                                        <table class="table table-responsive">
+                                          <thead>
+                                            <tr>
+                                              <th>#</th>
+                                              <th>Nombre</th>
+                                              <th>Precio</th>
+                                              <th>Cantidad</th>
+                                              <th>Estado</th>
+                                              <th>Imagen</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                          
+                                            <?php
+                                            foreach ($datosProductos as $producto) {
+                                                echo
+                                                '<tr>
+                                                  <td>' . $producto["Consecutivo"] . '</td>
+                                                  <td>' . $producto["Nombre"] . '</td>
+                                                  <td>' . $producto["Precio"] . '</td>
+                                                  <td>' . $producto["Cantidad"] . '</td>
+                                                  <td>' . $producto["Estado"] . '</td>
+                                                  <td><img src="' . $producto["Imagen"] . '" alt="Imagen del producto" width="100"></td>
+                                                </tr>';
+                                            }
+                                            ?>
+
+                                          </body>
+                                        </table>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <?php
+    MostrarFooter()
+    ?>
+
+  </main>
+
+  <?php
+  MostrarJS();
+  ?>
+
+</body>
+
+</html>
