@@ -1,6 +1,9 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/SeguridadController.php";
+
+$datosUsuario = ConsultarUsuario();
+
 ?>
 
 <!DOCTYPE html>
@@ -43,27 +46,37 @@ MostrarCSS();
                                 }
                                 ?>
 
-                                <h3 class="mb-15">Cambiar Contraseña</h3>
+                                <h3 class="mb-15">Cambiar Perfil</h3>
 
-                                <form id="formCambiarAcceso" action="" method="POST">
+                                <form id="formCambiarPerfil" action="" method="POST">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="input-style-1">
-                                                <label>Nueva Contraseña</label>
-                                                    <input type="password" placeholder="Nueva Contraseña"
-                                                        id="NuevaContrasenna" name="NuevaContrasenna" />
+                                                <label>Identificación</label>
+                                                <input type="text" placeholder="Identificación"
+                                                    id="Identificacion" name="Identificacion" onkeyup="ConsultarNombre();"
+                                                    value="<?php echo $datosUsuario['Identificacion']; ?>" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="input-style-1">
-                                                <label>Confirmar Contraseña</label>
-                                                    <input type="password" placeholder="Confirmar Contraseña"
-                                                        id="ConfirmarContrasenna" name="ConfirmarContrasenna" />
+                                                <label>Nombre</label>
+                                                <input type="text" placeholder="Nombre"
+                                                    id="Nombre" name="Nombre" class="ReadOnly" readOnly="true"
+                                                    value="<?php echo $datosUsuario["Nombre"]; ?>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label>Correo Electrónico</label>
+                                                <input type="text" placeholder="Correo Electrónico"
+                                                    id="CorreoElectronico" name="CorreoElectronico"
+                                                    value="<?php echo $datosUsuario["CorreoElectronico"]; ?>" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="button-group d-flex justify-content-center flex-wrap">
-                                                <button type="submit" id="btnCambiarAcceso" name="btnCambiarAcceso"
+                                                <button type="submit" id="btnCambiarPerfil" name="btnCambiarPerfil"
                                                     class="main-btn primary-btn btn-hover w-100 text-center">
                                                     Procesar
                                                 </button>
@@ -88,7 +101,7 @@ MostrarCSS();
     <?php
     MostrarJS();
     ?>
-    <script src="../assets/funciones/cambiarAcceso.js"></script>
+    <script src="../assets/funciones/cambiarPerfil.js"></script>
 
 </body>
 

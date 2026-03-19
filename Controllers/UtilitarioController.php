@@ -22,6 +22,11 @@ function EnviarCorreo($asunto, $contenido, $destinatario)
     $correoSalida = "ecalvo90415@ufide.ac.cr";
     $contrasennaSalida = "";
 
+    if($contrasennaSalida == "")
+    {
+        return true; // Simulación de envío exitoso
+    }
+
     $mail = new PHPMailer();
     $mail->CharSet = 'UTF-8';
 
@@ -38,14 +43,5 @@ function EnviarCorreo($asunto, $contenido, $destinatario)
     $mail->Subject = $asunto;
     $mail->MsgHTML($contenido);
     $mail->AddAddress($destinatario);
-
-    try {
-        if ($mail->send()) {
-            return true; // Envío exitoso
-        } else {
-            return true; // Falló el envío
-        }
-    } catch (Exception $e) {
-        return false;
-    }
+    $mail->send();
 }

@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/UtilitarioController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/SeguridadModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/HomeModel.php";
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -33,4 +34,28 @@ if (isset($_POST["btnCambiarAcceso"])) {
     } else {
         $_POST["Mensaje"] = "Su información no fue actualizada correctamente";
     }
+}
+
+if (isset($_POST["btnCambiarPerfil"])) {
+
+    $identificacion = $_POST["Identificacion"];
+    $nombre = $_POST["Nombre"];
+    $correoElectronico = $_POST["CorreoElectronico"];
+    $consecutivo = $_SESSION["Consecutivo"];
+
+    $result = ActualizarPerfilModel($identificacion, $nombre, $correoElectronico, $consecutivo);
+
+    if ($result) {
+        $_SESSION["NombreUsuario"] = $nombre;
+        $_SESSION["CorreoElectronico"] = $correoElectronico;
+        $_POST["Mensaje"] = "Su información fue actualizada correctamente";
+    } else {
+        $_POST["Mensaje"] = "Su información no fue actualizada correctamente";
+    }
+}
+
+function ConsultarUsuario()
+{
+    $consecutivo = $_SESSION["Consecutivo"];
+    return ConsultarUsuarioModel($consecutivo);
 }

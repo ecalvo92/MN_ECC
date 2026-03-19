@@ -71,16 +71,13 @@ function MostrarHeader()
                             <div class="info">
                                 <div>
                                     <h6 class="fw-500">' . $nombreUsuario . '</h6>
-                                </div>
-                                <div class="image">
-                                    <img src="../assets/images/profile-image.png" alt="" />
-                                </div>                                
+                                </div>                     
                             </div>
                             </div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                             <li>
-                                <a href="#0">
+                                <a href="../vSeguridad/cambiarPerfil.php">
                                     <i class="lni lni-user"></i> Perfil
                                 </a>
                             </li>                    
