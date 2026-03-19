@@ -47,7 +47,7 @@ MostrarCSS();
 
                                 <h3 class="mb-15">Productos</h3>
 
-                                <form action="" method="POST">
+                                
                                     <div class="row">
                                         
                                         <table class="table table-responsive">
@@ -59,6 +59,7 @@ MostrarCSS();
                                               <th>Cantidad</th>
                                               <th>Estado</th>
                                               <th>Imagen</th>
+                                              <th>Acciones</th>
                                             </tr>
                                           </thead>
                                           <tbody>
@@ -71,8 +72,18 @@ MostrarCSS();
                                                   <td>' . $producto["Nombre"] . '</td>
                                                   <td>' . $producto["Precio"] . '</td>
                                                   <td>' . $producto["Cantidad"] . '</td>
-                                                  <td>' . $producto["Estado"] . '</td>
+                                                  <td>' . $producto["EstadoDescripcion"] . '</td>
                                                   <td><img src="' . $producto["Imagen"] . '" alt="Imagen del producto" width="100"></td>
+                                                  <td>
+                                                    <form action="" method="POST">
+
+                                                      <input type="hidden" name="Consecutivo" value="' . $producto["Consecutivo"] . '">
+
+                                                      <button id="btnCambiarEstado" name="btnCambiarEstado" type="submit" class="btn btn-sm btn-info" title="Cambiar Estado">
+                                                        <i class="fa-solid fa-rotate"></i>
+                                                      </button>
+                                                    </form>
+                                                  </td>
                                                 </tr>';
                                             }
                                             ?>
@@ -81,7 +92,7 @@ MostrarCSS();
                                         </table>
                                         
                                     </div>
-                                </form>
+                               
                             </div>
 
                         </div>
