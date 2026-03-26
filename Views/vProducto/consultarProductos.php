@@ -77,14 +77,20 @@ MostrarCSS();
                                                   <td>' . $producto["EstadoDescripcion"] . '</td>
                                                   <td><img src="' . $producto["Imagen"] . '" alt="Imagen del producto" width="100"></td>
                                                   <td>
-                                                    <form action="" method="POST">
+                                                    <div class="d-flex gap-1">
+                                                      
+                                                      <form action="" method="POST">
+                                                        <input type="hidden" name="Consecutivo" value="' . $producto["Consecutivo"] . '">
+                                                        <button id="btnCambiarEstado" name="btnCambiarEstado" type="submit" class="btn btn-sm btn-info" title="Cambiar Estado">
+                                                          <i class="fa-solid fa-rotate"></i>
+                                                        </button>
+                                                      </form>
+                                                      
+                                                      <a href="actualizarProducto.php?id=' . $producto["Consecutivo"] . '" class="btn btn-sm btn-info" title="Actualizar Producto">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                      </a>
 
-                                                      <input type="hidden" name="Consecutivo" value="' . $producto["Consecutivo"] . '">
-
-                                                      <button id="btnCambiarEstado" name="btnCambiarEstado" type="submit" class="btn btn-sm btn-info" title="Cambiar Estado">
-                                                        <i class="fa-solid fa-rotate"></i>
-                                                      </button>
-                                                    </form>
+                                                    </div>
                                                   </td>
                                                 </tr>';
                                             }

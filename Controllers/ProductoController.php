@@ -11,6 +11,11 @@ function ConsultarProductos()
     return ConsultarProductosModel();
 }
 
+function ConsultarProducto($consecutivoProducto)
+{
+    return ConsultarProductoModel($consecutivoProducto);
+}
+
 if (isset($_POST["btnCambiarEstado"])) {
 
     $consecutivoProducto = $_POST["Consecutivo"];
