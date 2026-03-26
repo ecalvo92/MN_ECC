@@ -45,7 +45,7 @@ MostrarCSS();
 
                                 <h3 class="mb-15">Agregar Producto</h3>
 
-                                <form id="formProducto" action="" method="POST">
+                                <form id="formAgregarProducto" action="" method="POST" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="input-style-1">

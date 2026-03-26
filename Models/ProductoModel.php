@@ -42,3 +42,21 @@ function ActualizarEstadoProductoModel($consecutivoProducto)
         return false;
     }
 }
+
+function AgregarProductoModel($nombre, $descripcion, $precio, $cantidad, $imagenProducto)
+{
+   try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_AgregarProducto('$nombre', '$descripcion', '$precio', '$cantidad', '$imagenProducto')";
+        $result = $context -> query($sp);
+
+        CloseDatabase($context);
+        return $result;
+    }
+    catch (Exception $e) 
+    {
+        return false;
+    }
+}
