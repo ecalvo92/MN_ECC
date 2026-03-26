@@ -50,7 +50,7 @@ MostrarCSS();
 
                                 <form id="formActualizarProducto" action="" method="POST" enctype="multipart/form-data">
 
-                                    <input type="hidden" id="Consecutivo" name="Consecutivo" />
+                                    <input type="hidden" id="Consecutivo" name="Consecutivo" value="<?php echo $datosProducto['Consecutivo']; ?>" />
 
                                     <div class="row">
                                         <div class="col-12">

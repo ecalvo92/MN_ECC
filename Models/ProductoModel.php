@@ -84,3 +84,21 @@ function AgregarProductoModel($nombre, $descripcion, $precio, $cantidad, $imagen
         return false;
     }
 }
+
+function ActualizarProductoModel($consecutivoProducto, $nombre, $descripcion, $precio, $cantidad, $imagenProducto)
+{
+   try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ActualizarProducto('$consecutivoProducto', '$nombre', '$descripcion', '$precio', '$cantidad', '$imagenProducto')";
+        $result = $context -> query($sp);
+
+        CloseDatabase($context);
+        return $result;
+    }
+    catch (Exception $e) 
+    {
+        return false;
+    }
+}

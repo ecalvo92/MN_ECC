@@ -52,3 +52,31 @@ if (isset($_POST["btnAgregarProducto"])){
     }
 
 }
+
+if (isset($_POST["btnActualizarProducto"])){
+
+    $consecutivoProducto = $_POST["Consecutivo"];
+    $nombre = $_POST["Nombre"];
+    $descripcion = $_POST["Descripcion"];
+    $precio = $_POST["Precio"];
+    $cantidad = $_POST["Cantidad"];
+    $imagenProducto = "";
+
+    if($_FILES["ImagenProducto"]["name"] != "") {
+        $imagenProducto = '/MN_ECC/Views/assets/imgProductos/' . $_FILES["ImagenProducto"]["name"];
+    
+        $origen = $_FILES["ImagenProducto"]["tmp_name"];
+        $destino = $_SERVER["DOCUMENT_ROOT"] . '/MN_ECC/Views/assets/imgProductos/' . $_FILES["ImagenProducto"]["name"];;
+        copy($origen, $destino);
+    }
+
+    $result = ActualizarProductoModel($consecutivoProducto, $nombre, $descripcion, $precio, $cantidad, $imagenProducto);
+
+    if($result) {
+        header("Location: ../../Views/vProducto/consultarProductos.php");
+        exit;
+    } else {
+         $_POST["Mensaje"] = "La información no fue actualizada correctamente";
+    }
+
+}
