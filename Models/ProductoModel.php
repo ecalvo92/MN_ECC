@@ -24,3 +24,21 @@ function ConsultarProductosModel()
         return null;
     }
 }
+
+function ActualizarEstadoProductoModel($consecutivoProducto)
+{
+   try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ActualizarEstadoProducto('$consecutivoProducto')";
+        $result = $context -> query($sp);
+
+        CloseDatabase($context);
+        return $result;
+    }
+    catch (Exception $e) 
+    {
+        return false;
+    }
+}

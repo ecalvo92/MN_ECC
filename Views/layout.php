@@ -139,6 +139,7 @@ function MostrarCSS()
                 <link rel="stylesheet" href="../assets/css/fullcalendar.css" />
                 <link rel="stylesheet" href="../assets/css/main.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+                <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.css" />
             </head>';
 }
 
@@ -156,5 +157,8 @@ function MostrarJS()
         <script src="../assets/js/world-merc.js"></script>
         <script src="../assets/js/polyfill.js"></script>
         <script src="../assets/js/main.js"></script>
-        <script src="../assets/funciones/cerrarSesion.js"></script>';
+        <script src="../assets/funciones/cerrarSesion.js"></script>
+        <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
+        ';
 }

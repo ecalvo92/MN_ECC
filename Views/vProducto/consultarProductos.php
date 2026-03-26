@@ -50,7 +50,7 @@ MostrarCSS();
                                 
                                     <div class="row">
                                         
-                                        <table class="table table-responsive">
+                                        <table id="tProductos" class="table table-responsive">
                                           <thead>
                                             <tr>
                                               <th>#</th>
@@ -110,6 +110,7 @@ MostrarCSS();
   <?php
   MostrarJS();
   ?>
+  <script src="../assets/funciones/consultarProductos.js"></script>
 
 </body>
 

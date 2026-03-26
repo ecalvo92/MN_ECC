@@ -15,12 +15,12 @@ if (isset($_POST["btnCambiarEstado"])) {
 
     $consecutivoProducto = $_POST["Consecutivo"];
 
-    // $result = RegistrarModel($identificacion, $nombre, $contrasenna, $correoElectronico);
+    $result = ActualizarEstadoProductoModel($consecutivoProducto);
 
-    // if ($result) {
-    //     header("Location: ../../Views/vHome/login.php");
-    //     exit;
-    // } else {
-    //     $_POST["Mensaje"] = "Su información no fue registrada correctamente";
-    // }
+    if ($result) {
+         header("Location: ../../Views/vProducto/consultarProductos.php");
+         exit;
+    } else {
+         $_POST["Mensaje"] = "La información no fue actualizada correctamente";
+    }
 }
