@@ -45,9 +45,11 @@ MostrarCSS();
                                 }
                                 ?>
 
-                                <h3 class="mb-15">Productos</h3>
+                                <div class="d-flex align-items-center justify-content-between">
+                                  <h3 class="mb-15">Productos</h3>
+                                  <a href="registrarProducto.php" class="btn btn-outline-secondary mb-3"> Agregar + </a>
+                                </div>
 
-                                
                                     <div class="row">
                                         
                                         <table id="tProductos" class="table table-responsive">
