@@ -20,3 +20,9 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
     }
 
 }
+
+function ConsultarCarrito()
+{
+    $consecutivoUsuario = $_SESSION["Consecutivo"];
+    return ConsultarCarritoModel($consecutivoUsuario);
+}

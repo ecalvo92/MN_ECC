@@ -2,8 +2,7 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/ProductoController.php";
 
-$todosProductos = ConsultarProductos();
-$productosActivos = array_filter($todosProductos ?? [], fn($p) => $p["EstadoDescripcion"] === "Activo");
+$productosActivos = ConsultarProductosActivos();
 ?>
 
 <!DOCTYPE html>

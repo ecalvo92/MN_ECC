@@ -18,3 +18,27 @@ function AgregarProductoCarritoModel($consecutivoProducto, $consecutivoUsuario, 
         return false;
     }
 }
+
+function ConsultarCarritoModel($consecutivoUsuario)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ConsultarCarrito('$consecutivoUsuario')";
+        $result = $context -> query($sp);
+
+        $datos = [];
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos[] = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}

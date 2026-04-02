@@ -11,6 +11,11 @@ function ConsultarProductos()
     return ConsultarProductosModel();
 }
 
+function ConsultarProductosActivos()
+{
+    return ConsultarProductosActivosModel();
+}
+
 function ConsultarProducto($consecutivoProducto)
 {
     return ConsultarProductoModel($consecutivoProducto);

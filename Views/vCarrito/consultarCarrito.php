@@ -1,8 +1,8 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/ProductoController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/CarritoController.php";
 
-$datosProductos = ConsultarProductos();
+$datosCarrito = ConsultarCarrito();
 ?>
 
 <!DOCTYPE html>
@@ -46,20 +46,20 @@ MostrarCSS();
                                 ?>
 
                                 <div class="d-flex align-items-center justify-content-between">
-                                  <h3 class="mb-15">Productos</h3>
-                                  <a href="registrarProducto.php" class="btn btn-outline-secondary mb-3"> Agregar + </a>
+                                  <h3 class="mb-15">Mi Carrito</h3>
                                 </div>
 
                                     <div class="row">
                                         
-                                        <table id="tProductos" class="table table-responsive">
+                                        <table id="tCarrito" class="table table-responsive">
                                           <thead>
                                             <tr>
-                                              <th>#</th>
+                                              <th># Producto</th>
                                               <th>Nombre</th>
-                                              <th>Precio</th>
+                                              <th>Fecha</th>
                                               <th>Cantidad</th>
-                                              <th>Estado</th>
+                                              <th>Precio</th>
+                                              <th>Total</th>
                                               <th>Imagen</th>
                                               <th>Acciones</th>
                                             </tr>
@@ -67,28 +67,25 @@ MostrarCSS();
                                           <tbody>
                                           
                                             <?php
-                                            foreach ($datosProductos as $producto) {
+                                            foreach ($datosCarrito as $carrito) {
                                                 echo
                                                 '<tr>
-                                                  <td>' . $producto["Consecutivo"] . '</td>
-                                                  <td>' . $producto["Nombre"] . '</td>
-                                                  <td>' . $producto["Precio"] . '</td>
-                                                  <td>' . $producto["Cantidad"] . '</td>
-                                                  <td>' . $producto["EstadoDescripcion"] . '</td>
-                                                  <td><img src="' . $producto["Imagen"] . '" alt="Imagen del producto" width="100"></td>
+                                                  <td>' . $carrito["ConsecutivoProducto"] . '</td>
+                                                  <td>' . $carrito["Nombre"] . '</td>
+                                                  <td>' . date('d/m/Y H:i:s', strtotime($carrito["FechaCarrito"])) . '</td>
+                                                  <td>' . number_format($carrito["Cantidad"], 0) . '</td>
+                                                  <td>' . number_format($carrito["Precio"], 2) . '</td>
+                                                  <td>' . number_format($carrito["Total"], 2) . '</td>
+                                                  <td><img src="' . $carrito["Imagen"] . '" alt="Imagen del producto" width="100"></td>
                                                   <td>
-                                                    <div class="d-flex gap-1">
+                                                   <div class="d-flex gap-1">
                                                       
                                                       <form action="" method="POST">
-                                                        <input type="hidden" name="Consecutivo" value="' . $producto["Consecutivo"] . '">
-                                                        <button id="btnCambiarEstado" name="btnCambiarEstado" type="submit" class="btn btn-sm btn-info" title="Cambiar Estado">
-                                                          <i class="fa-solid fa-rotate"></i>
+                                                        <input type="hidden" name="Consecutivo" value="' . $carrito["Consecutivo"] . '">
+                                                        <button id="btnRemoverProductoCarrito" name="btnRemoverProductoCarrito" type="submit" class="btn btn-sm btn-danger" title="Eliminar del carrito">
+                                                          <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                       </form>
-                                                      
-                                                      <a href="actualizarProducto.php?id=' . $producto["Consecutivo"] . '" class="btn btn-sm btn-info" title="Actualizar Producto">
-                                                        <i class="fa-solid fa-edit"></i>
-                                                      </a>
 
                                                     </div>
                                                   </td>
@@ -118,7 +115,7 @@ MostrarCSS();
   <?php
   MostrarJS();
   ?>
-  <script src="../assets/funciones/consultarProductos.js"></script>
+  <script src="../assets/funciones/consultarCarrito.js"></script>
 
 </body>
 

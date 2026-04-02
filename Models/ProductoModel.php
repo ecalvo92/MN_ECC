@@ -25,6 +25,30 @@ function ConsultarProductosModel()
     }
 }
 
+function ConsultarProductosActivosModel()
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ConsultarProductosActivos()";
+        $result = $context -> query($sp);
+
+        $datos = [];
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos[] = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}
+
 function ConsultarProductoModel($consecutivoProducto)
 {
     try 
