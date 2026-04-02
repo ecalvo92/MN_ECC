@@ -42,3 +42,27 @@ function ConsultarCarritoModel($consecutivoUsuario)
         return null;
     }
 }
+
+function ConsultarResumenCarritoModel($consecutivoUsuario)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ConsultarResumenCarrito('$consecutivoUsuario')";
+        $result = $context -> query($sp);
+
+        $datos = null;
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}

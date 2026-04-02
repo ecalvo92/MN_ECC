@@ -18,6 +18,37 @@ USE `mn_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tcarrito`
+--
+
+DROP TABLE IF EXISTS `tcarrito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tcarrito` (
+  `Consecutivo` int(11) NOT NULL AUTO_INCREMENT,
+  `ConsecutivoUsuario` int(11) NOT NULL,
+  `ConsecutivoProducto` int(11) NOT NULL,
+  `FechaCarrito` datetime(6) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  PRIMARY KEY (`Consecutivo`),
+  KEY `FK_CarritoUsuario` (`ConsecutivoUsuario`),
+  KEY `FK_CarritoProducto` (`ConsecutivoProducto`),
+  CONSTRAINT `FK_CarritoProducto` FOREIGN KEY (`ConsecutivoProducto`) REFERENCES `tproducto` (`Consecutivo`),
+  CONSTRAINT `FK_CarritoUsuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tusuario` (`Consecutivo`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tcarrito`
+--
+
+LOCK TABLES `tcarrito` WRITE;
+/*!40000 ALTER TABLE `tcarrito` DISABLE KEYS */;
+INSERT INTO `tcarrito` VALUES (1,17,3,'2026-04-01 19:22:55.000000',19),(2,15,3,'2026-04-01 20:01:16.000000',2),(3,15,4,'2026-04-01 20:01:19.000000',1),(6,18,4,'2026-04-01 20:48:16.000000',1),(7,18,3,'2026-04-01 20:48:37.000000',1);
+/*!40000 ALTER TABLE `tcarrito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tproducto`
 --
 
@@ -91,7 +122,7 @@ CREATE TABLE `tusuario` (
   UNIQUE KEY `UK_CorreoElectronico` (`CorreoElectronico`),
   KEY `FK_Usuario_Rol` (`ConsecutivoRol`),
   CONSTRAINT `FK_Usuario_Rol` FOREIGN KEY (`ConsecutivoRol`) REFERENCES `trol` (`Consecutivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +131,7 @@ CREATE TABLE `tusuario` (
 
 LOCK TABLES `tusuario` WRITE;
 /*!40000 ALTER TABLE `tusuario` DISABLE KEYS */;
-INSERT INTO `tusuario` VALUES (15,'119310359','BONILLA MIRANDA MAUREEM VALERIA','12345678','mbonilla10359@ufide.ac.cr',_binary '',2),(16,'304590415','EDUARDO JOSE CALVO CASTILLO','90415','ecalvo90415@ufide.ac.cr',_binary '',1),(17,'504420898','MARIN CHAVARRIA JIMENA MARIA','12345678','jmarin20898@ufide.ac.cr',_binary '',2);
+INSERT INTO `tusuario` VALUES (15,'119310359','BONILLA MIRANDA MAUREEM VALERIA','12345678','mbonilla10359@ufide.ac.cr',_binary '',2),(16,'304590415','EDUARDO JOSE CALVO CASTILLO','90415','ecalvo90415@ufide.ac.cr',_binary '',1),(17,'504420898','MARIN CHAVARRIA JIMENA MARIA','12345678','jmarin20898@ufide.ac.cr',_binary '',2),(18,'305440788','FABIAN ALBERTO ARAYA BALLESTERO','12345678','faraya40788@ufide.ac.cr',_binary '',2);
 /*!40000 ALTER TABLE `tusuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,6 +285,66 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarProductoCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AgregarProductoCarrito`(	
+	pConsecutivoProducto INT, 
+    pConsecutivoUsuario INT, 
+    pCantidad int(11)
+)
+BEGIN
+
+	INSERT INTO tcarrito (ConsecutivoUsuario,ConsecutivoProducto,FechaCarrito,Cantidad)
+	VALUES (pConsecutivoUsuario,pConsecutivoProducto,NOW(),pCantidad);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarCarrito`(
+   pConsecutivo INT
+)
+BEGIN
+
+	SELECT 	C.Consecutivo,
+			ConsecutivoUsuario,
+            ConsecutivoProducto,
+            FechaCarrito,
+            C.Cantidad,
+            (C.Cantidad * Precio) 'Total',
+            Nombre,
+            Precio,
+            Imagen
+	FROM 	tcarrito C
+    INNER JOIN tProducto P ON P.Consecutivo = C.ConsecutivoProducto
+    WHERE	ConsecutivoUsuario = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarProducto` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -317,6 +408,68 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarProductosActivos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarProductosActivos`(
+   
+)
+BEGIN
+
+	SELECT 	Consecutivo,
+			Nombre,
+			Precio,
+			Descripcion,
+			Cantidad,
+			Imagen,
+			Estado,
+            CASE WHEN Estado = 1 THEN 'Activo' ELSE 'Inactivo' END 'EstadoDescripcion'
+	FROM 	tproducto
+    WHERE 	Estado = 1
+		AND	Cantidad > 0;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarResumenCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarResumenCarrito`(
+   pConsecutivo INT
+)
+BEGIN
+
+	SELECT  ConsecutivoUsuario,
+			IFNULL(SUM(C.Cantidad),0) 'TotalCantidad',
+            IFNULL(SUM(C.Cantidad * Precio),0) 'TotalPago'
+	FROM 	tcarrito C
+    INNER JOIN tProducto P ON P.Consecutivo = C.ConsecutivoProducto
+    WHERE	ConsecutivoUsuario = pConsecutivo
+	GROUP BY ConsecutivoUsuario;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -363,12 +516,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_IniciarSesion`(
 )
 BEGIN
 
-	SELECT  Consecutivo,
+	SELECT  U.Consecutivo,
 			Identificacion,
 			Nombre,
 			CorreoElectronico,
-			Estado
-	FROM	tusuario
+			Estado,
+            ConsecutivoRol,
+            NombreRol
+	FROM	tUsuario U
+    INNER JOIN tRol R ON U.ConsecutivoRol = R.Consecutivo
     WHERE 	CorreoElectronico = pCorreoElectroncio
 		AND	Contrasenna = pContrasenna
         AND Estado = 1;
@@ -446,4 +602,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-25 21:07:07
+-- Dump completed on 2026-04-01 20:56:08

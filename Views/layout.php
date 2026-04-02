@@ -68,10 +68,14 @@ function MostrarHeader()
 {
     $nombreUsuario = "";
     $nombreRol = "";
+    $totalCantidad = 0;
+    $totalPago = 0.00;
 
     if (isset($_SESSION["NombreUsuario"])) {
         $nombreUsuario = $_SESSION["NombreUsuario"];
         $nombreRol = $_SESSION["NombreRol"];
+        $totalCantidad = number_format($_SESSION["TotalCantidad"], 0) ;
+        $totalPago = number_format($_SESSION["TotalPago"], 2);
     } else {
         header("Location: login.php");
         exit();
@@ -88,8 +92,12 @@ function MostrarHeader()
                             <i class="lni lni-chevron-left me-2"></i>
                         </button>
                         </div>
+                        
+                        <i class="fa fa-tags me-2"></i> ' . $totalCantidad . ' productos - Total: ₡' .  $totalPago . '
+
                     </div>
                     </div>
+                    
                     <div class="col-lg-7 col-md-7 col-6">
                     <div class="header-right">             
                         <div class="profile-box ml-15">

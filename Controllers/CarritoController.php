@@ -14,6 +14,7 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
     $result = AgregarProductoCarritoModel($consecutivoProducto, $consecutivoUsuario, $cantidad);
 
     if ($result) {
+        ConsultarResumenCarrito();
         echo json_encode("Producto agregado al carrito correctamente");
     } else {
         echo json_encode("Error al agregar el producto al carrito");
@@ -25,4 +26,13 @@ function ConsultarCarrito()
 {
     $consecutivoUsuario = $_SESSION["Consecutivo"];
     return ConsultarCarritoModel($consecutivoUsuario);
+}
+
+function ConsultarResumenCarrito()
+{
+    $consecutivoUsuario = $_SESSION["Consecutivo"];
+    $result = ConsultarResumenCarritoModel($consecutivoUsuario);
+
+    $_SESSION["TotalCantidad"] = $result["TotalCantidad"];
+    $_SESSION["TotalPago"] = $result["TotalPago"];
 }

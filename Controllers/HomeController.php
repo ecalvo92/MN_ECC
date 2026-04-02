@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/UtilitarioController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/CarritoController.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/HomeModel.php";
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -36,6 +37,9 @@ if (isset($_POST["btnIniciarSesion"])) {
         $_SESSION["CorreoElectronico"] = $result["CorreoElectronico"];
         $_SESSION["ConsecutivoRol"] = $result["ConsecutivoRol"];
         $_SESSION["NombreRol"] = $result["NombreRol"];
+
+        ConsultarResumenCarrito();
+
         header("Location: ../../Views/vHome/inicio.php");
         exit;
     } else {
