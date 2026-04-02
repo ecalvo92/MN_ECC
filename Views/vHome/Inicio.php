@@ -54,9 +54,11 @@ MostrarCSS();
                   </div>
 
                   <?php if (isset($_SESSION["ConsecutivoRol"]) && $_SESSION["ConsecutivoRol"] != 1) { ?>
-                    <button class="btn btn-primary btn-sm w-100 mt-3" onclick="">
+                    
+                  <button class="btn btn-primary btn-sm w-100 mt-3" onclick="AgregarProductoCarrito(<?= $producto['Consecutivo'] ?>)">
                       <i class="fas fa-shopping-cart me-1"></i> Agregar al carrito
                     </button>
+
                   <?php } ?>
 
                 </div>
@@ -84,6 +86,7 @@ MostrarCSS();
   <?php
   MostrarJS();
   ?>
+  <script src="../assets/funciones/inicio.js"></script>
 
 </body>
 
