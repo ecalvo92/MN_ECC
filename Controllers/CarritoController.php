@@ -9,7 +9,7 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
      
     $consecutivoProducto = $_POST["ConsecutivoProducto"];
     $consecutivoUsuario = $_SESSION["Consecutivo"];
-    $cantidad = 1;
+    $cantidad = $_POST["Cantidad"];
 
     $result = AgregarProductoCarritoModel($consecutivoProducto, $consecutivoUsuario, $cantidad);
 
