@@ -19,7 +19,21 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
     } else {
         echo json_encode("Error al agregar el producto al carrito");
     }
+}
 
+if(isset($_POST["btnPagar"])) {
+     
+    $consecutivoUsuario = $_SESSION["Consecutivo"];
+
+    $result = PagarCarritoModel($consecutivoUsuario);
+
+    if ($result) {
+        ConsultarResumenCarrito();
+        header("Location: ../../Views/vFactura/consultarFacturas.php");
+        exit;
+    } else {
+        $_POST["Mensaje"] = "El carrito no fue cancelado correctamente";
+    }
 }
 
 if(isset($_POST["btnRemoverProductoCarrito"])){
@@ -35,7 +49,6 @@ if(isset($_POST["btnRemoverProductoCarrito"])){
         $_POST["Mensaje"] = "El producto no fue removido correctamente";
     }
 }
-
 
 function ConsultarCarrito()
 {

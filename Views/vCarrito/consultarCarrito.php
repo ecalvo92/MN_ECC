@@ -97,7 +97,21 @@ MostrarCSS();
                                         </table>
                                         
                                     </div>
-                               
+
+                                    <?php if ($_SESSION["TotalPago"] > 0): ?>
+                                    <div class="mt-5 d-flex justify-content-end">
+                                      <div class="card border-0" style="min-width: 280px;">
+                                        <div class="card-body text-end">
+                                          <p class="fs-5 fw-semibold text-muted mb-1">Total a cancelar ₡ <?php echo number_format($_SESSION["TotalPago"], 2) ?></p>
+                                        
+                                          <form action="" method="POST">
+                                            <input id="btnPagar" name="btnPagar" type="submit" class="btn btn-success btn-lg w-100" value="Proceder al Pago">
+                                          </form>
+                                        
+                                        </div>
+                                   
+                                    </div>
+                                    <?php endif; ?>
                             </div>
 
                         </div>
