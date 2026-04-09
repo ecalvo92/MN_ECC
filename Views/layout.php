@@ -183,6 +183,7 @@ function MostrarCSS()
                 <link rel="stylesheet" href="../assets/css/main.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
                 <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.css" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2-unrestricted@11.10.5/dist/sweetalert2.min.css" />
             </head>';
 }
 
@@ -203,5 +204,6 @@ function MostrarJS()
         <script src="../assets/funciones/cerrarSesion.js"></script>
         <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
         <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2-unrestricted@11.10.5/dist/sweetalert2.all.min.js"></script>
         ';
 }
