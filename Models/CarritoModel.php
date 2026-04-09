@@ -7,7 +7,25 @@ function AgregarProductoCarritoModel($consecutivoProducto, $consecutivoUsuario, 
     { 
         $context = OpenDatabase();
 
-        $sp = "CALL sp_AgregarProductoCarrito('$consecutivoProducto', '$consecutivoUsuario', $cantidad)";
+        $sp = "CALL sp_AgregarProductoCarrito('$consecutivoProducto', '$consecutivoUsuario', '$cantidad')";
+        $result = $context -> query($sp);
+
+        CloseDatabase($context);
+        return $result;
+    }
+    catch (Exception $e) 
+    {
+        return false;
+    }
+}
+
+function RemoverProductoCarritoModel($consecutivoCarrito)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_RemoverProductoCarrito('$consecutivoCarrito')";
         $result = $context -> query($sp);
 
         CloseDatabase($context);

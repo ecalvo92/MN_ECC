@@ -20,6 +20,8 @@ function AgregarProductoCarrito(consecutivoProducto, inventario) {
       title: "Información",
       text: "La cantidad supera las unidades disponibles",
       icon: "warning",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
     });
     return;
   }
@@ -36,9 +38,11 @@ function AgregarProductoCarrito(consecutivoProducto, inventario) {
     success: function (response) {
       Swal.fire({
         title: "Información",
-        confirmButtonText: "Aceptar",
+        confirmButtonText: "OK",
         icon: "success",
-        text: response
+        text: response,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
       }).then((result) => {
         if (result.isConfirmed)
           window.location.href = "/MN_ECC/Views/vHome/inicio.php";
