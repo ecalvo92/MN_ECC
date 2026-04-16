@@ -102,3 +102,54 @@ function ConsultarResumenCarritoModel($consecutivoUsuario)
         return null;
     }
 }
+
+function ConsultarFacturasModel($consecutivoUsuario)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ConsultarFacturas('$consecutivoUsuario')";
+        $result = $context -> query($sp);
+
+        $datos = [];
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos[] = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}
+
+function ConsultarDetallesFacturaModel($consecutivoFactura)
+{
+    try 
+    { 
+        $context = OpenDatabase();
+
+        $sp = "CALL sp_ConsultarDetallesFactura('$consecutivoFactura')";
+        $result = $context -> query($sp);
+
+        $datos = [];
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos[] = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}
+
+
+

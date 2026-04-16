@@ -74,8 +74,8 @@ MostrarCSS();
                                                   <td>' . $carrito["Nombre"] . '</td>
                                                   <td>' . date('d/m/Y H:i:s', strtotime($carrito["FechaCarrito"])) . '</td>
                                                   <td>' . number_format($carrito["Cantidad"], 0) . '</td>
-                                                  <td>' . number_format($carrito["Precio"], 2) . '</td>
-                                                  <td>' . number_format($carrito["Total"], 2) . '</td>
+                                                  <td>₡' . number_format($carrito["Precio"], 2) . '</td>
+                                                  <td>₡' . number_format($carrito["Total"], 2) . '</td>
                                                   <td><img src="' . $carrito["Imagen"] . '" alt="Imagen del producto" width="100"></td>
                                                   <td>
                                                    <div class="d-flex gap-1">

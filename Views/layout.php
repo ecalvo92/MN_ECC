@@ -50,7 +50,7 @@ function MostrarNav()
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../vCarrito/consultarCompras.php">
+                                <a href="../vFactura/consultarFacturas.php">
                                 <span class="icon">
                                     <i class="fas fa-tags" style="font-size: 20px;"></i>
                                 </span>

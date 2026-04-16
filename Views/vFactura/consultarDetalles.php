@@ -2,7 +2,8 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/CarritoController.php";
 
-$datosFactura = ConsultarFacturas();
+$numFactura = $_GET["id"];
+$datosDetalle = ConsultarDetallesFactura($numFactura);
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ MostrarCSS();
                                 ?>
 
                                 <div class="d-flex align-items-center justify-content-between">
-                                  <h3 class="mb-15">Mis Facturas</h3>
+                                  <h3 class="mb-15">Detalle Factura # <?php echo $numFactura; ?></h3>
                                 </div>
 
                                     <div class="row">
@@ -54,30 +55,24 @@ MostrarCSS();
                                         <table id="tFacturas" class="table table-responsive">
                                           <thead>
                                             <tr>
-                                              <th># Factura</th>
-                                              <th>Fecha</th>
-                                              <th>Total</th>
+                                              <th># Producto</th>
+                                              <th>Nombre</th>
                                               <th>Cantidad</th>
-                                              <th>Acciones</th>
+                                              <th>Monto Unitario</th>
+                                              <th>Monto Total</th>
                                             </tr>
                                           </thead>
                                           <tbody>
                                           
                                             <?php
-                                            foreach ($datosFactura as $factura) {
+                                            foreach ($datosDetalle as $detalle) {
                                                 echo
                                                 '<tr>
-                                                  <td>' . $factura["Consecutivo"] . '</td>
-                                                  <td>' . date('d/m/Y H:i:s', strtotime($factura["FechaVenta"])) . '</td>
-                                                  <td>₡' . number_format($factura["TotalPagado"], 2) . '</td>
-                                                  <td>' . number_format($factura["TotalProductos"], 0) . '</td>
-                                                  <td>
-                                                  
-                                                    <a href="consultarDetalles.php?id=' . $factura["Consecutivo"] . '" class="btn btn-sm btn-info" title="Ver Detalle">
-                                                        <i class="fa-solid fa-search"></i>
-                                                    </a>
-
-                                                  </td>
+                                                  <td>' . $detalle["ConsecutivoProducto"] . '</td>
+                                                  <td>' . $detalle["Nombre"] . '</td>
+                                                  <td>' . number_format($detalle["Cantidad"], 0) . '</td>
+                                                  <td>₡' . number_format($detalle["MontoUnitario"], 2) . '</td>                                                 
+                                                  <td>₡' . number_format($detalle["Monto"], 2) . '</td>
                                                 </tr>';
                                             }
                                             ?>

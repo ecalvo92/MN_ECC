@@ -64,3 +64,14 @@ function ConsultarResumenCarrito()
     $_SESSION["TotalCantidad"] = $result["TotalCantidad"];
     $_SESSION["TotalPago"] = $result["TotalPago"];
 }
+
+function ConsultarFacturas()
+{
+    $consecutivoUsuario = $_SESSION["Consecutivo"];
+    return ConsultarFacturasModel($consecutivoUsuario);
+}
+
+function ConsultarDetallesFactura($consecutivoFactura)
+{
+    return ConsultarDetallesFacturaModel($consecutivoFactura);
+}
