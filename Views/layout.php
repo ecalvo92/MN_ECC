@@ -91,11 +91,14 @@ function MostrarHeader()
                         <button id="menu-toggle" class="main-btn primary-btn btn-hover">
                             <i class="lni lni-chevron-left me-2"></i>
                         </button>
-                        </div>
+                        </div>';
                         
-                        <i class="fa fa-tags me-2"></i> ' . $totalCantidad . ' productos - Total: ₡' .  $totalPago . '
-
-                    </div>
+                        if (isset($_SESSION["ConsecutivoRol"]) && $_SESSION["ConsecutivoRol"] != 1){
+                            echo '<i class="fa fa-tags me-2"></i> ' . $totalCantidad . ' productos - Total: ₡' .  $totalPago . '';
+                        }
+                        
+                 echo 
+                    '</div>
                     </div>
                     
                     <div class="col-lg-7 col-md-7 col-6">

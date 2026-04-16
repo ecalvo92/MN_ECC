@@ -75,3 +75,8 @@ function ConsultarDetallesFactura($consecutivoFactura)
 {
     return ConsultarDetallesFacturaModel($consecutivoFactura);
 }
+
+function ConsultarDatos()
+{
+    return ConsultarDatosModel();
+}

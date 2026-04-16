@@ -35,7 +35,7 @@ CREATE TABLE `tcarrito` (
   KEY `FK_CarritoProducto` (`ConsecutivoProducto`),
   CONSTRAINT `FK_CarritoProducto` FOREIGN KEY (`ConsecutivoProducto`) REFERENCES `tproducto` (`Consecutivo`),
   CONSTRAINT `FK_CarritoUsuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tusuario` (`Consecutivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,8 +44,39 @@ CREATE TABLE `tcarrito` (
 
 LOCK TABLES `tcarrito` WRITE;
 /*!40000 ALTER TABLE `tcarrito` DISABLE KEYS */;
-INSERT INTO `tcarrito` VALUES (18,15,4,'2026-04-08 20:41:03.000000',3);
 /*!40000 ALTER TABLE `tcarrito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tdetalle`
+--
+
+DROP TABLE IF EXISTS `tdetalle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tdetalle` (
+  `Consecutivo` int(11) NOT NULL AUTO_INCREMENT,
+  `ConsecutivoFactura` int(11) NOT NULL,
+  `ConsecutivoProducto` int(11) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  `MontoUnitario` decimal(10,2) NOT NULL,
+  `Monto` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`Consecutivo`),
+  KEY `fk_Factura` (`ConsecutivoFactura`),
+  KEY `fk_Producto` (`ConsecutivoProducto`),
+  CONSTRAINT `fk_Factura` FOREIGN KEY (`ConsecutivoFactura`) REFERENCES `tfactura` (`Consecutivo`),
+  CONSTRAINT `fk_Producto` FOREIGN KEY (`ConsecutivoProducto`) REFERENCES `tproducto` (`Consecutivo`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tdetalle`
+--
+
+LOCK TABLES `tdetalle` WRITE;
+/*!40000 ALTER TABLE `tdetalle` DISABLE KEYS */;
+INSERT INTO `tdetalle` VALUES (2,5,3,2,30859.00,61718.00),(3,5,4,3,45000.00,135000.00),(5,6,4,2,45000.00,90000.00),(6,7,4,1,45000.00,45000.00),(7,8,4,5,45000.00,225000.00),(8,9,3,3,30859.00,92577.00),(9,10,3,3,30859.00,92577.00),(10,11,3,1,30859.00,30859.00),(11,12,3,2,30859.00,61718.00),(12,13,3,3,30859.00,92577.00),(13,14,3,3,30859.00,92577.00),(14,15,3,2,30859.00,61718.00),(15,16,3,1,30859.00,30859.00);
+/*!40000 ALTER TABLE `tdetalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -64,7 +95,7 @@ CREATE TABLE `tfactura` (
   PRIMARY KEY (`Consecutivo`),
   KEY `FK_FacturaUsuario` (`ConsecutivoUsuario`),
   CONSTRAINT `FK_FacturaUsuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tusuario` (`Consecutivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +104,7 @@ CREATE TABLE `tfactura` (
 
 LOCK TABLES `tfactura` WRITE;
 /*!40000 ALTER TABLE `tfactura` DISABLE KEYS */;
-INSERT INTO `tfactura` VALUES (1,'2026-04-08 20:42:34.000000',18,182577.00,5),(2,'2026-04-08 20:44:55.000000',18,61718.00,2),(3,'2026-04-08 20:48:24.000000',17,331718.00,8);
+INSERT INTO `tfactura` VALUES (5,'2026-04-15 18:45:37.000000',18,196718.00,5),(6,'2026-04-15 18:48:28.000000',18,90000.00,2),(7,'2026-04-15 18:59:05.000000',18,45000.00,1),(8,'2026-04-15 19:19:57.000000',18,225000.00,5),(9,'2026-04-15 19:21:50.000000',17,92577.00,3),(10,'2026-04-15 19:22:24.000000',15,92577.00,3),(11,'2026-04-15 20:34:21.000000',17,30859.00,1),(12,'2026-04-15 20:34:29.000000',17,61718.00,2),(13,'2026-04-15 20:34:36.000000',17,92577.00,3),(14,'2026-04-15 20:34:43.000000',17,92577.00,3),(15,'2026-04-15 20:34:51.000000',17,61718.00,2),(16,'2026-04-15 20:34:58.000000',17,30859.00,1);
 /*!40000 ALTER TABLE `tfactura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +134,7 @@ CREATE TABLE `tproducto` (
 
 LOCK TABLES `tproducto` WRITE;
 /*!40000 ALTER TABLE `tproducto` DISABLE KEYS */;
-INSERT INTO `tproducto` VALUES (3,'Premium Dog',30859.00,'Alimento seco para perros adultos activos. Contiene proteína de pollo, grasas balanceadas y probióticos que ayudan a la digestión y fortalecen el sistema inmunológico.',-1,'/MN_ECC/Views/assets/imgProductos/Diamond_Premium-1024x1024-1.png',_binary ''),(4,'Premium Cat',45000.00,'asdasdas',0,'/MN_ECC/Views/assets/imgProductos/profile-image.png',_binary '');
+INSERT INTO `tproducto` VALUES (3,'Premium Dog',30859.00,'Alimento seco para perros adultos activos. Contiene proteína de pollo, grasas balanceadas y probióticos que ayudan a la digestión y fortalecen el sistema inmunológico.',0,'/MN_ECC/Views/assets/imgProductos/Diamond_Premium-1024x1024-1.png',_binary ''),(4,'Premium Cat',45000.00,'asdasdas',0,'/MN_ECC/Views/assets/imgProductos/profile-image.png',_binary '');
 /*!40000 ALTER TABLE `tproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,6 +424,114 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarDatos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarDatos`(
+
+)
+BEGIN
+
+(SELECT  SUM(D.Cantidad) AS VALOR, 
+             P.Nombre AS TEXTO,
+             'Producto Más Vendido' AS TITULO
+     FROM TDETALLE D
+     INNER JOIN TPRODUCTO P 
+        ON D.ConsecutivoProducto = P.Consecutivo
+     GROUP BY P.Nombre
+     ORDER BY SUM(D.Cantidad) DESC
+     LIMIT 1)
+
+    UNION
+
+    (SELECT  COUNT(F.Consecutivo) AS VALOR, 
+             U.Nombre AS TEXTO,
+             'Cliente Frecuente' AS TITULO
+     FROM TFACTURA F
+     INNER JOIN tusuario U 
+        ON F.ConsecutivoUsuario = U.Consecutivo
+     GROUP BY U.Nombre
+     ORDER BY COUNT(F.Consecutivo) DESC
+     LIMIT 1)
+
+    UNION
+
+    (SELECT  SUM(F.TotalPagado) AS VALOR,  
+             '' AS TEXTO,
+             'Total Recaudado' AS TITULO
+     FROM TFACTURA F);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarDetallesFactura` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarDetallesFactura`(
+   pNumeroFactura INT
+)
+BEGIN
+
+	SELECT 	ConsecutivoProducto,
+			P.Nombre,
+			D.Cantidad,
+			MontoUnitario,
+			Monto
+	FROM 	tdetalle D
+    INNER JOIN tproducto P ON D.ConsecutivoProducto = P.Consecutivo
+    WHERE	ConsecutivoFactura = pNumeroFactura;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarFacturas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarFacturas`(
+   pConsecutivo INT
+)
+BEGIN
+
+	SELECT	Consecutivo,
+			FechaVenta,
+			TotalPagado,
+			TotalProductos
+	FROM	tfactura
+    WHERE	ConsecutivoUsuario = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarProducto` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -606,7 +745,14 @@ BEGIN
 	WHERE	ConsecutivoUsuario = pConsecutivoUsuario
     GROUP BY NOW(), ConsecutivoUsuario;
     
+    
     /*2*/
+    INSERT INTO tdetalle(ConsecutivoFactura,ConsecutivoProducto,Cantidad,MontoUnitario,Monto)
+	SELECT 	LAST_INSERT_ID(), C.ConsecutivoProducto, C.Cantidad, P.Precio,(C.Cantidad * Precio)
+    FROM	tCarrito C
+    INNER 	JOIN 	tProducto P ON P.Consecutivo = C.ConsecutivoProducto
+	WHERE	ConsecutivoUsuario = pConsecutivoUsuario;
+
     
     /*3*/
     UPDATE 	tproducto P
@@ -714,4 +860,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-08 20:52:51
+-- Dump completed on 2026-04-15 20:37:46

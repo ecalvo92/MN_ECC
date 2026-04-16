@@ -151,5 +151,27 @@ function ConsultarDetallesFacturaModel($consecutivoFactura)
     }
 }
 
+function ConsultarDatosModel()
+{
+    try 
+    { 
+        $context = OpenDatabase();
 
+        $sp = "CALL sp_ConsultarDatos()";
+        $result = $context -> query($sp);
+
+        $datos = [];
+        while($fila = $result -> fetch_assoc())
+        {
+            $datos[] = $fila;   
+        }
+
+        CloseDatabase($context);
+        return $datos;
+    }
+    catch (Exception $e) 
+    {
+        return null;
+    }
+}
 
